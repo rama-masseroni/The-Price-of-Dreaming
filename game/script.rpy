@@ -3,6 +3,11 @@
 
 # El juego comienza aquí.
 
+default decision_horas_extra = None
+default decision_calle = None
+default tono_novela = None
+
+
 label start:
 
     scene black
@@ -25,12 +30,14 @@ label start:
 
     menu:
         "Aceptar":
+            $ decision_horas_extra = "aceptar"
             narrador "Gabriel acepta quedarse."
+            jump dia1_parada_colectivo
 
         "Excusarse":
+            $ decision_horas_extra = "excusarse"
+            narrador "Gabriel intenta excusarse."
             jump dia1_calle_temprano
-
-    return
 
 
 label dia1_calle_temprano:
@@ -40,11 +47,12 @@ label dia1_calle_temprano:
 
     menu:
         "Volver a casa":
+            $ decision_calle = "volver_a_casa"
             jump dia1_casa_directo
 
         "Comprar regalo":
+            $ decision_calle = "comprar_regalo"
             jump dia1_casa_flor
-
 
 label dia1_casa_directo:
 
@@ -69,20 +77,7 @@ label dia1_casa_directo:
     call screen documento_aviso("ARCA/AFIP - NOTIFICACIÓN DE DEUDA", "Se informa deuda pendiente. El expediente avanza a instancia de embargo preventivo.", "EMBARGO PREVENTIVO")
 
     pensamiento "No me entienden. Quizás nadie lo haga. Pero tengo que ganar esto como sea."
-    narrador "(El cursor parpadea sobre la hoja en blanco. El juego te da a elegir cómo empieza la novela de Gabriel basándose en lo vivido hoy.)"
-    sistema "DECISIÓN DE TONO:"
-
-    menu:
-        "Tono de Frustración":
-            narrador "Gabriel empieza a escribir desde la frustración."
-
-        "Tono de Aislamiento":
-            narrador "Gabriel empieza a escribir desde el aislamiento."
-
-        "Tono de Determinación Fría":
-            narrador "Gabriel empieza a escribir desde una determinación fría."
-
-    jump dia1_convergencia_final
+    jump dia1_eleccion_tono
 
 
 label dia1_casa_flor:
@@ -117,18 +112,128 @@ label dia1_casa_flor:
     call screen documento_aviso("ARCA/AFIP - NOTIFICACIÓN DE DEUDA", "Se informa deuda pendiente. El expediente avanza a instancia de embargo preventivo.", "EMBARGO PREVENTIVO")
 
     pensamiento "Tengo que escribir. No los puedo defraudar."
-    narrador "(El cursor parpadea sobre la hoja en blanco. El juego te da a elegir cómo empieza la novela de Gabriel basándose en lo vivido hoy.)"
+    jump dia1_eleccion_tono
+
+
+label dia1_parada_colectivo:
+
+    "Gabriel asiente en silencio. Daniel le da una palmada condescendiente en el hombro y se va."
+
+    "Se enfoca el reloj que transiciona de 18hs a 21hs."
+
+    "Parada de colectivo. Noche. Lluvia. Gabriel está solo, encorvado bajo el frío. Un vagabundo sentado sobre unos cartones extiende una mano."
+
+    vagabundo "Una ayuda, jefe... para un café. Hace mucho frío."
+
+    menu:
+        "Ayudarlo":
+            $ decision_calle = "ayudar"
+            jump casa_ayuda
+
+        "Ignorarlo":
+            $ decision_calle = "ignorar"
+            jump casa_ignora
+
+
+label casa_ayuda:
+
+    "Gabriel saca un billete de 2.000 pesos arrugado. Se lo entrega al hombre."
+
+    vagabundo "Gracias, bendiciones. Ya me ignoraron tantos que solo me quedaba soñar."
+
+    gabriel "Mal día. Mañana será otro."
+
+    vagabundo "Eso decimos todos. Tené cuidado, a veces uno se pasa la vida escribiendo el prólogo y se olvida de que el libro tiene muchas páginas."
+
+    gabriel "¿Qué? ¿Vos sabés quién soy? ¿Cómo sabés que escribo?"
+
+    vagabundo "Te aferrás a tus cosas como si tu vida estuviera ahí. Si llevas algo que vale la pena, lo abrazas."
+
+    gabriel "Ya llega el bondi. Me tengo que ir."
+
+    "Llega el colectivo. Gabriel sube rápido, pero se queda mirando por la ventanilla mientras el hombre vuelve a fundirse en la oscuridad."
+
+    gabriel "{i}Uno se pasa la vida escribiendo el prólogo. Solo yo me encuentro estos personajes.{/i}"
+
+    "Cocina pequeña, luz cálida pero tenue. Eva está lavando un plato. Lucas no está en escena."
+
+    eva "Lucas ya se durmió. Estuvo preguntando por qué su papá no llegaba."
+
+    gabriel "Perdón Eva. Daniel me encajó lo de zona sur. Me tuve que quedar."
+
+    eva "¿Te van a pagar esta vez las horas extra? ¿O es otro favor para cuidar el puesto?"
+
+    gabriel "Probablemente no... pero no puedo decir que no ahora. No con cómo están las cosas."
+
+    "Se enfoca a Eva que suspira en resignación. Vuelve a Gabriel."
+
+    gabriel "Eva, me queda una semana para terminar una historia. Si gano, puedo cambiar las cosas."
+
+    eva "¿Ahora te parece el mejor momento, Gabriel? No sé si estamos para sueños ahora."
+
+    "Eva sale de la cocina sin decir nada más. Se escucha el cierre de una puerta."
+
+    "Habitación en penumbra. Solo la luz del monitor ilumina la cara de Gabriel. A un costado del teclado, se destaca el aviso de la AFIP."
+
+    call screen documento_aviso("ARCA/AFIP - NOTIFICACIÓN DE DEUDA", "Se informa deuda pendiente. El expediente avanza a instancia de embargo preventivo.", "EMBARGO PREVENTIVO")
+
+    pensamiento "Tengo que escribir. Es lo único que me queda."
+    jump dia1_eleccion_tono
+
+
+label casa_ignora:
+
+    narrador "Gabriel da un paso atrás para evitar cruzar miradas con el hombre, acercándose demasiado al cordón de la vereda."
+    narrador "Un taxi pasa a toda velocidad, pisando de lleno un bache gigante. Un chorro de agua sucia y barro empapa a Gabriel de pies a cabeza. El vagabundo ni se inmuta, solo se cubre con su cartón."
+    narrador "Llega el colectivo. Gabriel sube rápido, chorreando agua. La gente a su alrededor lo mira con desagrado y se aparta. Se sienta junto a la ventanilla mojada."
+
+    pensamiento "Qué locura cómo estamos. La calle no perdona a nadie."
+
+    narrador "Entrada de la casa. Luz apagada, ambiente en completo silencio."
+    narrador "Gabriel está empapado y el agua sucia gotea sobre el piso."
+
+    pensamiento "Me tengo que sacar el barro antes de poner a lavar esto."
+
+    narrador "(Transición)"
+    narrador "Baño pequeño y azulejos viejos. Luz blanca parpadeante. Gabriel está encorvado frente a la pileta, intentando limpiar el barro de su ropa bajo el chorro de agua fría."
+    narrador "En el reflejo del espejo se ve a Eva apareciendo en el marco de la puerta."
+
+    eva "Gabriel... escuché la puerta y no venías a la cocina. ¿Qué te pasó?"
+    gabriel "Un taxi. Agarró un pozo enorme en la avenida. No pasa nada, sale con agua."
+    eva "Estás temblando, Gabi. Y llegaste tardísimo, Lucas te estuvo esperando para..."
+    gabriel "¡Ya sé que llegué tarde, Eva! ¡Me tuve que quedar haciendo los remitos de mierda de Daniel y encima me pasa esto! ¡No me lo recuerdes!"
+    eva "No me grites. Yo no tengo la culpa de que no te animes a decirle que no a tu jefe."
+    gabriel "Todo esto es para nosotros. Si gano el concurso la semana que viene..."
+    eva "Mirate, Gabriel. Estás lavando barro de tu única ropa decente en un baño congelado a las diez de la noche. Secate y andá a dormir, no quiero que Lucas te escuche gritar así."
+
+    narrador "Eva sale, dejándolo solo."
+    narrador "Gabriel se vuelve a mirar en el espejo salpicado: está empapado, sucio y derrotado."
+    narrador "(Transición)"
+    narrador "Habitación en penumbra. Solo la luz del monitor ilumina la cara de Gabriel. A un costado del teclado, se destaca el aviso de la AFIP."
+
+    call screen documento_aviso("ARCA/AFIP - NOTIFICACIÓN DE DEUDA", "Se informa deuda pendiente. El expediente avanza a instancia de embargo preventivo.", "EMBARGO PREVENTIVO")
+
+    pensamiento "Tengo que escribir. Es lo único que me queda."
+    jump dia1_eleccion_tono
+
+
+label dia1_eleccion_tono:
+
+    narrador "(El cursor parpadea sobre la hoja en blanco. Lo vivido durante el día todavía pesa, pero Gabriel debe decidir qué voz tendrá la novela.)"
     sistema "DECISIÓN DE TONO:"
 
     menu:
-        "Tono Romántico":
-            narrador "Gabriel empieza a escribir desde un tono romántico."
+        "Tono Melancólico":
+            $ tono_novela = "melancolico"
+            narrador "Gabriel empieza a escribir desde la melancolía."
 
-        "Tono de Sacrificio":
-            narrador "Gabriel empieza a escribir desde el sacrificio."
+        "Tono Cínico/Agresivo":
+            $ tono_novela = "cinico_agresivo"
+            narrador "Gabriel empieza a escribir con una voz cínica y agresiva."
 
-        "Tono de Calma Tensa":
-            narrador "Gabriel empieza a escribir desde una calma tensa."
+        "Tono Esperanzador":
+            $ tono_novela = "esperanzador"
+            narrador "Gabriel empieza a escribir aferrándose a la esperanza."
 
     jump dia1_convergencia_final
 
@@ -161,3 +266,4 @@ label dia1_convergencia_final:
     sistema "FIN DEL DÍA 1"
 
     return
+
