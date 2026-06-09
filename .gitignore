@@ -182,4 +182,13 @@ cython_debug/
 
 *.html
 *.twee
-settings.json
+*.save
+*.rpyb
+game/saves/navigation.json
+game/cache/bytecode-312.rpyb
+game/cache/py3analysis.rpyb
+game/cache/screens.rpyb
+game/cache/shaders.txt
+game/saves/auto-1-LT1.save
+game/saves/auto-2-LT1.save
+game/saves/persistent
