@@ -31,12 +31,10 @@ label start:
     menu:
         "Aceptar":
             $ decision_horas_extra = "aceptar"
-            narrador "Gabriel acepta quedarse."
             jump dia1_parada_colectivo
 
         "Excusarse":
             $ decision_horas_extra = "excusarse"
-            narrador "Gabriel intenta excusarse."
             jump dia1_calle_temprano
 
 
