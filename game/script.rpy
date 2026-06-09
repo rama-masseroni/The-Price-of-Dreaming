@@ -218,18 +218,18 @@ label casa_ignora:
 label dia1_eleccion_tono:
 
     narrador "(El cursor parpadea sobre la hoja en blanco. Lo vivido durante el día todavía pesa, pero Gabriel debe decidir qué voz tendrá la novela.)"
-    sistema "DECISIÓN DE TONO:"
+    narrador "(El inconsciente de Gabriel lo inclina a escribir con un tono...)"
 
     menu:
-        "Tono Melancólico":
+        "Melancólico":
             $ tono_novela = "melancolico"
             narrador "Gabriel empieza a escribir desde la melancolía."
 
-        "Tono Cínico/Agresivo":
+        "Cínico/Agresivo":
             $ tono_novela = "cinico_agresivo"
             narrador "Gabriel empieza a escribir con una voz cínica y agresiva."
 
-        "Tono Esperanzador":
+        "Esperanzador":
             $ tono_novela = "esperanzador"
             narrador "Gabriel empieza a escribir aferrándose a la esperanza."
 
