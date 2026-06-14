@@ -3,6 +3,7 @@
 
 screen correo_convocatoria():
     modal True
+    zorder 200
 
     frame:
         xalign 0.5
@@ -21,14 +22,17 @@ screen correo_convocatoria():
                 color "#ffffff"
                 line_spacing 8
 
-    textbutton "Continuar":
-        xalign 0.5
-        yalign 0.86
-        action Return()
+            textbutton "Continuar":
+                xalign 0.5
+                top_margin 18
+                action Return(True)
+
+    key "dismiss" action Return(True)
 
 
 screen documento_aviso(titulo, cuerpo, sello=None):
     modal True
+    zorder 200
 
     frame:
         xalign 0.5
@@ -58,7 +62,9 @@ screen documento_aviso(titulo, cuerpo, sello=None):
                     bold True
                     xalign 0.5
 
-    textbutton "Continuar":
-        xalign 0.5
-        yalign 0.86
-        action Return()
+            textbutton "Continuar":
+                xalign 0.5
+                top_margin 18
+                action Return(True)
+
+    key "dismiss" action Return(True)

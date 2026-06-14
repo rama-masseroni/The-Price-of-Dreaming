@@ -1,0 +1,16 @@
+# Fondos conceptuales temporales, normalizados a la resolucion del proyecto.
+
+image bg oficina = im.Scale("art/concepts/fondo_01_oficina_boceto.png", 1920, 1080)
+image bg centro_floreria = im.Scale("art/concepts/fondo_02_centro_floreria_boceto.png", 1920, 1080)
+image bg interior_floreria = im.Scale("art/concepts/fondo_03_interior_floreria_boceto.png", 1920, 1080)
+image bg cocina_fria = im.Scale("art/concepts/fondo_04_cocina_luz_fria_boceto.png", 1920, 1080)
+image bg cocina_calida = im.Scale("art/concepts/fondo_05_cocina_luz_calida_boceto.png", 1920, 1080)
+image bg habitacion_gabriel = im.Scale("art/concepts/fondo_06_habitacion_gabriel_boceto.png", 1920, 1080)
+image bg habitacion_gabriel_oscuro = im.Scale("art/concepts/fondo_07_habitacion_gabriel_rosa_boceto.png", 1920, 1080)
+image bg parada_lluvia = im.Scale("art/concepts/fondo_08_parada_lluvia_boceto.png", 1920, 1080)
+image bg interior_colectivo = im.Scale("art/concepts/fondo_09_interior_colectivo_boceto.png", 1920, 1080)
+image bg entrada_casa = im.Scale("art/concepts/fondo_10_entrada_casa_boceto.png", 1920, 1080)
+image bg banio = im.Scale("art/concepts/fondo_11_banio_boceto.png", 1920, 1080)
+image bg habitacion_lucas = im.Scale("art/concepts/fondo_12_habitacion_lucas_boceto.png", 1920, 1080)
+image bg cursor_pantalla = im.Scale("art/concepts/fondo_13_cursor_pantalla_boceto.png", 1920, 1080)
+image bg papeles_escritorio = im.Scale("art/concepts/fondo_13b_papeles_escritorio_boceto.png", 1920, 1080)

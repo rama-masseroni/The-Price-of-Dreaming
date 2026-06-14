@@ -110,12 +110,6 @@ screen say(who, what):
         text what id "what"
 
 
-    ## Si hay una imagen lateral, la muestra encima del texto. No la muestra en
-    ## la variante de teléfono - no hay lugar.
-    if not renpy.variant("small"):
-        add SideImage() xalign 0.0 yalign 1.0
-
-
 ## Permite que el 'namebox' pueda ser estilizado en el objeto 'Character'.
 init python:
     config.character_id_prefixes.append('namebox')
@@ -135,7 +129,7 @@ style window:
     yalign gui.textbox_yalign
     ysize gui.textbox_height
 
-    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+    background Solid("#000000ff")
 
 style namebox:
     xpos gui.name_xpos
