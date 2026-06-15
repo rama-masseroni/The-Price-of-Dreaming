@@ -27,6 +27,10 @@ label start:
     show daniel normal at busto_derecha with dissolve
     daniel "Gabi, querido. Escuchame, surgió un problema con la carga de los remitos de la zona sur. Necesito que te quedes un par de horas más para cerrar el balance hoy."
     gabriel "Pero Daniel, hoy tenía que..."
+
+    hide daniel normal with dissolve
+    show daniel enojado at busto_derecha with dissolve
+
     daniel "Dale, no me falles. Sabés que la mano viene dura y necesito gente comprometida. ¿Te quedás, no?"
 
     menu:
@@ -127,6 +131,7 @@ label dia1_casa_flor:
     hide lucas normal with dissolve
     narrador "Eva y Lucas se van."
     scene bg habitacion_gabriel with dissolve
+    show gabriel feliz at busto_izquierda with dissolve
     pensamiento "El florista tenía razón. El ambiente se siente distinto. Menos pesado."
     scene bg papeles_escritorio with dissolve
     narrador "(A un costado del teclado, se destaca el aviso de la AFIP.)"
@@ -141,13 +146,18 @@ label dia1_parada_colectivo:
 
     scene bg oficina
 
+    show gabriel enojado at busto_izquierda with dissolve
+    show daniel normal at busto_derecha with dissolve
     "Gabriel asiente en silencio. Daniel le da una palmada condescendiente en el hombro y se va."
-
+    hide daniel normal with dissolve
+    
     "Se enfoca el reloj que transiciona de 18hs a 21hs."
 
     scene bg parada_lluvia with dissolve
     "Gabriel está solo, encorvado bajo el frío. Un vagabundo sentado sobre unos cartones extiende una mano."
 
+    show gabriel triste at busto_izquierda with dissolve
+    show vagabundo normal at busto_derecha with dissolve
     vagabundo "Una ayuda, jefe... para un café. Hace mucho frío."
 
     menu:
@@ -164,6 +174,8 @@ label casa_ayuda:
 
     "Gabriel saca un billete de 2.000 pesos arrugado. Se lo entrega al hombre."
 
+    show gabriel normal at busto_izquierda with dissolve
+    show vagabundo feliz at busto_derecha with dissolve
     vagabundo "Gracias, bendiciones. Ya me ignoraron tantos que solo me quedaba soñar."
 
     gabriel "Mal día. Mañana será otro."
@@ -176,28 +188,41 @@ label casa_ayuda:
 
     gabriel "Ya llega el bondi. Me tengo que ir."
 
+    hide vagabundo feliz with dissolve
     "Llega el colectivo. Gabriel sube rápido, pero se queda mirando por la ventanilla mientras el hombre vuelve a fundirse en la oscuridad."
 
     scene bg interior_colectivo with dissolve
     gabriel "{i}Uno se pasa la vida escribiendo el prólogo. Solo yo me encuentro estos personajes.{/i}"
 
     scene bg cocina_calida with dissolve
+    show eva normal at busto_derecha with dissolve
     "Eva está lavando un plato. Lucas no está en escena."
 
+    show gabriel normal at busto_izquierda with dissolve
     eva "Lucas ya se durmió. Estuvo preguntando por qué su papá no llegaba."
 
+    show gabriel triste at busto_izquierda with dissolve
     gabriel "Perdón Eva. Daniel me encajó lo de zona sur. Me tuve que quedar."
 
-    eva "¿Te van a pagar esta vez las horas extra? ¿O es otro favor para cuidar el puesto?"
+    show eva triste at busto_derecha with dissolve
+    eva "¿Te van a pagar esta vez las horas extra?"
+    show eva enojada at busto_derecha with dissolve
+    eva "¿O es otro favor para cuidar el puesto?"
 
+    show gabriel normal at busto_izquierda with dissolve
     gabriel "Probablemente no... pero no puedo decir que no ahora. No con cómo están las cosas."
 
+    hide gabriel with dissolve
     "Se enfoca a Eva que suspira en resignación. Vuelve a Gabriel."
 
+    show gabriel normal at busto_izquierda with dissolve
+    show eva normal at busto_derecha with dissolve
     gabriel "Eva, me queda una semana para terminar una historia. Si gano, puedo cambiar las cosas."
 
+    show eva enojada at busto_derecha with dissolve
     eva "¿Ahora te parece el mejor momento, Gabriel? No sé si estamos para sueños ahora."
 
+    hide eva with dissolve
     "Eva sale de la cocina sin decir nada más. Se escucha el cierre de una puerta."
 
     scene bg habitacion_gabriel with dissolve
@@ -213,31 +238,47 @@ label casa_ayuda:
 
 label casa_ignora:
 
+    show gabriel normal at busto_izquierda with dissolve
     narrador "Gabriel da un paso atrás para evitar cruzar miradas con el hombre, acercándose demasiado al cordón de la vereda."
+    hide vagabundo with dissolve
     narrador "Un taxi pasa a toda velocidad, pisando de lleno un bache gigante. Un chorro de agua sucia y barro empapa a Gabriel de pies a cabeza. El vagabundo ni se inmuta, solo se cubre con su cartón."
+    show gabriel enojado at busto_izquierda with dissolve
     narrador "Llega el colectivo. Gabriel sube rápido, chorreando agua. La gente a su alrededor lo mira con desagrado y se aparta. Se sienta junto a la ventanilla mojada."
 
     scene bg interior_colectivo with dissolve
+    show gabriel enojado at busto_izquierda with dissolve
     pensamiento "Qué locura cómo estamos. La calle no perdona a nadie."
 
     scene bg entrada_casa with dissolve
     narrador "Gabriel está empapado y el agua sucia gotea sobre el piso."
 
+    show gabriel normal at busto_izquierda with dissolve
     pensamiento "Me tengo que sacar el barro antes de poner a lavar esto."
 
     scene bg banio with dissolve
+    show gabriel enojado at busto_izquierda with dissolve
     narrador "Gabriel está encorvado frente a la pileta, intentando limpiar el barro de su ropa bajo el chorro de agua fría."
     narrador "En el reflejo del espejo se ve a Eva apareciendo en el marco de la puerta."
 
+    show gabriel enojado at busto_izquierda with dissolve
+    show eva triste at busto_derecha with dissolve
     eva "Gabriel... escuché la puerta y no venías a la cocina. ¿Qué te pasó?"
+    show gabriel enojado at busto_izquierda with dissolve
     gabriel "Un taxi. Agarró un pozo enorme en la avenida. No pasa nada, sale con agua."
+    show eva triste at busto_derecha with dissolve
     eva "Estás temblando, Gabi. Y llegaste tardísimo, Lucas te estuvo esperando para..."
+    show gabriel enojado at busto_izquierda with dissolve
     gabriel "¡Ya sé que llegué tarde, Eva! ¡Me tuve que quedar haciendo los remitos de mierda de Daniel y encima me pasa esto! ¡No me lo recuerdes!"
+    show eva enojada at busto_derecha with dissolve
     eva "No me grites. Yo no tengo la culpa de que no te animes a decirle que no a tu jefe."
+    show gabriel enojado at busto_izquierda with dissolve
     gabriel "Todo esto es para nosotros. Si gano el concurso la semana que viene..."
+    show eva enojada at busto_derecha with dissolve
     eva "Mirate, Gabriel. Estás lavando barro de tu única ropa decente en un baño congelado a las diez de la noche. Secate y andá a dormir, no quiero que Lucas te escuche gritar así."
 
     narrador "Eva sale, dejándolo solo."
+    hide eva with dissolve
+    show gabriel triste at busto_izquierda with dissolve
     narrador "Gabriel se vuelve a mirar en el espejo salpicado: está empapado, sucio y derrotado."
     scene bg habitacion_gabriel_oscuro with dissolve
     narrador "Solo la luz del monitor ilumina la cara de Gabriel."
@@ -284,16 +325,35 @@ label dia1_convergencia_final:
     narrador "(Se enfoca la moneda y lleva a un flashback.)"
     scene black with dissolve
     scene bg habitacion_lucas with dissolve
+    show lucas feliz at busto_izquierda with dissolve
     narrador "(Lucas tiene dos juguetes en la mano.)"
-
+    hide lucas feliz
+    show lucas normal at busto_izquierda with dissolve
     lucas "Me quiero llevar uno para mostrarle a mis amigos hoy, pero no sé cuál llevar, pa."
+
+    show gabriel normal at busto_derecha with dissolve
     gabriel "(Sonriendo, saca una moneda del bolsillo). Te voy a enseñar un truco. Vamos a tirarla. Cara es el auto, ceca es el dragón."
+    
+    hide lucas normal with dissolve
+    show lucas triste at busto_izquierda with dissolve
     lucas "¡Pero eso es elegir a ver cuál tiene más suerte! ¡No me gusta!"
+
+    hide gabriel feliz
+    show gabriel normal at busto_derecha with dissolve    
     gabriel "Ahí está el secreto. Tirala bien alto. En el momento en que la moneda esté en el aire, antes de que caiga, vas a sentir que hay una de las dos opciones que preferís que salga."
+
+    hide lucas triste with dissolve
+    show lucas enojado at busto_izquierda with dissolve
     lucas "¿Para qué tiro la moneda entonces?"
+
+    hide gabriel normal
+    show gabriel feliz at busto_derecha with dissolve
     gabriel "Porque no importa lo que diga la moneda, solo qué sentiste mientras volaba. Vamos a probar."
 
     narrador "(Gabriel tira la moneda en el aire. Cae ceca.)"
+    hide lucas enojado with dissolve
+    hide gabriel feliz
+    show lucas feliz at busto_izquierda with dissolve
     lucas "¡Vamos! ¡Llevo el dragón!"
     narrador "(Lucas le da un abrazo a Gabriel. Se enfoca la moneda en el piso.)"
     scene black with dissolve
@@ -303,6 +363,7 @@ label dia1_convergencia_final:
         scene bg habitacion_gabriel_oscuro with dissolve
     narrador "(Se ve a Gabriel con la moneda en la mano.)"
 
+    show gabriel triste at busto_izquierda with dissolve
     pensamiento "¿Qué es lo que realmente quiero? ¿Qué tengo que hacer?"
 
     narrador "(Gabriel lanza la moneda. El sonido del metal girando en el aire invade todo el ambiente, tapando el ruido de la lluvia. Gabriel atrapa la moneda con un golpe seco, cubriéndola con la otra palma sobre el escritorio.)"
