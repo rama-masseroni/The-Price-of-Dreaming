@@ -327,32 +327,25 @@ label dia1_convergencia_final:
     scene bg habitacion_lucas with dissolve
     show lucas feliz at busto_izquierda with dissolve
     narrador "(Lucas tiene dos juguetes en la mano.)"
-    hide lucas feliz
     show lucas normal at busto_izquierda with dissolve
     lucas "Me quiero llevar uno para mostrarle a mis amigos hoy, pero no sé cuál llevar, pa."
 
     show gabriel normal at busto_derecha with dissolve
     gabriel "(Sonriendo, saca una moneda del bolsillo). Te voy a enseñar un truco. Vamos a tirarla. Cara es el auto, ceca es el dragón."
     
-    hide lucas normal with dissolve
     show lucas triste at busto_izquierda with dissolve
     lucas "¡Pero eso es elegir a ver cuál tiene más suerte! ¡No me gusta!"
 
-    hide gabriel feliz
     show gabriel normal at busto_derecha with dissolve    
     gabriel "Ahí está el secreto. Tirala bien alto. En el momento en que la moneda esté en el aire, antes de que caiga, vas a sentir que hay una de las dos opciones que preferís que salga."
 
-    hide lucas triste with dissolve
     show lucas enojado at busto_izquierda with dissolve
     lucas "¿Para qué tiro la moneda entonces?"
 
-    hide gabriel normal
     show gabriel feliz at busto_derecha with dissolve
     gabriel "Porque no importa lo que diga la moneda, solo qué sentiste mientras volaba. Vamos a probar."
 
     narrador "(Gabriel tira la moneda en el aire. Cae ceca.)"
-    hide lucas enojado with dissolve
-    hide gabriel feliz
     show lucas feliz at busto_izquierda with dissolve
     lucas "¡Vamos! ¡Llevo el dragón!"
     narrador "(Lucas le da un abrazo a Gabriel. Se enfoca la moneda en el piso.)"
