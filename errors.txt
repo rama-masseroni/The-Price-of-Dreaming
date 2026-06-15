@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 349: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    show lucas feliz at busto_izquierda with dissolve
+    ^
+
+Ren'Py Version: Ren'Py 8.5.2.26010301
+Mon Jun 15 13:36:43 2026
