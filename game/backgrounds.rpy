@@ -14,3 +14,15 @@ image bg banio = im.Scale("art/concepts/fondo_11_banio_boceto.png", 1920, 1080)
 image bg habitacion_lucas = im.Scale("art/concepts/fondo_12_habitacion_lucas_boceto.png", 1920, 1080)
 image bg cursor_pantalla = im.Scale("art/concepts/fondo_13_cursor_pantalla_boceto.png", 1920, 1080)
 image bg papeles_escritorio = im.Scale("art/concepts/fondo_13b_papeles_escritorio_boceto.png", 1920, 1080)
+
+# TODO Arte: reemplazar por imagen del colectivo llegando a la parada.
+image bg bondi_llegando = Solid("#000")
+image bg moneda_escritorio = im.Scale("art/concepts/moneda_escritorio.png", 1920, 1080)
+image bg juguetes_lucas = im.Scale("art/concepts/juguetes_lucas.png", 1920, 1080)
+image bg moneda_volando = im.Scale("art/concepts/moneda_volando_escritura.png", 1920, 1080)
+image bg moneda_volando_flashback = im.Scale("art/concepts/moneda_volando_flashback.png", 1920, 1080)
+image bg primer_plano_flor = im.Scale("art/concepts/primer_plano_flor.png", 1920, 1080)
+image bg reloj_18hs = im.Scale("art/concepts/reloj_18hs.png", 1920, 1080)
+image bg reloj_21hs = im.Scale("art/concepts/reloj_21hs.png", 1920, 1080)
+# TODO Arte: reemplazar por efecto visual de barro/agua salpicando a Gabriel.
+image bg salpicadura_barro = Solid("#000")
