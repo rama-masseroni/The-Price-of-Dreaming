@@ -5,6 +5,7 @@
 
 default decision_horas_extra = None
 default decision_calle = None
+default estado_animo_eva = None
 default tono_novela = None
 
 
@@ -15,20 +16,21 @@ label start:
     scene bg oficina with dissolve
 
     narrador "DÍA 1"
-    narrador "Se observa a Gabriel, sentado frente a la PC en su cubículo de la oficina."
-    narrador "(Se abre una ventana emergente en la pantalla de la PC: un correo electrónico.)"
+    scene bg reloj_18hs with dissolve
+    $ renpy.pause(2)
+    show gabriel normal at busto_izquierda with dissolve
+    pensamiento "Ya casi son las seis. Por fin me puedo ir a casa. Reviso este mail y me voy."
 
+    scene bg oficina with dissolve
     call screen correo_convocatoria
 
     show gabriel normal at busto_izquierda with dissolve
     pensamiento "Faltan siete días. Solo siete días."
-    narrador "(Entra Daniel, el jefe, caminando con paso pesado. Se apoya en el escritorio de Gabriel, invadiendo su espacio.)"
 
     show daniel normal at busto_derecha with dissolve
     daniel "Gabi, querido. Escuchame, surgió un problema con la carga de los remitos de la zona sur. Necesito que te quedes un par de horas más para cerrar el balance hoy."
     gabriel "Pero Daniel, hoy tenía que..."
 
-    hide daniel normal with dissolve
     show daniel enojado at busto_derecha with dissolve
 
     daniel "Dale, no me falles. Sabés que la mano viene dura y necesito gente comprometida. ¿Te quedás, no?"
@@ -36,16 +38,26 @@ label start:
     menu:
         "Aceptar":
             $ decision_horas_extra = "aceptar"
+            gabriel "Está bien, Daniel. Me quedo a terminar los remitos."
+            show daniel normal at busto_derecha with dissolve
+            daniel "¡Así me gusta! Sabía que podía contar con tu compromiso. Yo me voy a casa, pero confío en que vas a dejar todo lo que falta cerrado."
+            show gabriel enojado at busto_izquierda with dissolve
+            gabriel "Nos vemos mañana, Daniel."
             jump dia1_parada_colectivo
 
         "Excusarse":
             $ decision_horas_extra = "excusarse"
+            gabriel "Te pido disculpas, Daniel, pero hoy me es imposible. Tengo un compromiso familiar que no puedo postergar."
+            daniel "Bueno... Una lástima. Pensé que estabas más comprometido con el equipo. Podés irte."
+            hide daniel enojado with dissolve
+            pensamiento "Espero no habérmela mandado. Mejor me voy yendo antes de que cambie de opinión."
             jump dia1_calle_temprano
 
 
 label dia1_calle_temprano:
 
     scene bg centro_floreria with dissolve
+    show gabriel normal at busto_izquierda with dissolve
 
     narrador "(Tras negarse a las horas extra, Gabriel camina por el centro antes de tomar el colectivo. Se detiene frente a una florería pequeña.)"
     pensamiento "Hace mucho no tengo un gesto con Eva. El laburo me está matando."
@@ -57,14 +69,15 @@ label dia1_calle_temprano:
 
         "Comprar regalo":
             $ decision_calle = "comprar_regalo"
+            $ estado_animo_eva = "calido"
             jump dia1_casa_flor
 
 label dia1_casa_directo:
 
     scene bg cocina_fria with dissolve
 
-    narrador "Eva está sentada en la mesa revisando unos papeles con el ceño fruncido. Lucas está dibujando en un rincón."
-
+    show gabriel normal at busto_izquierda with dissolve
+    show eva normal at busto_derecha with dissolve
     lucas "¡Papá! Llegaste temprano."
     gabriel "(Le acaricia la cabeza a Lucas y mira a Eva con cautela). Hola."
     eva "(Levanta la vista de los papeles, extrañada) ¿Qué pasó? ¿Te dejaron salir a horario hoy de milagro?"
@@ -73,11 +86,10 @@ label dia1_casa_directo:
     gabriel "(Se acerca, tenso) Ya sé, Eva. Pero si termino la novela y gano el concurso, el adelanto editorial nos da un respiro en serio. Necesito este tiempo para escribir."
     eva "(Con voz dura, pragmática). Me alegra que estés acá con nosotros, pero me asusta lo que estás apostando. (Se pone de pie). Lucas, vamos a la pieza a terminar la tarea, dejá a tu papá \"trabajar\"."
 
-    narrador "(Eva y Lucas salen de la escena. El ambiente de la cocina queda frío y envuelto en un silencio incómodo.)"
+    show lucas normal at busto_derecha with dissolve
+    narrador "(El ambiente de la cocina queda frío y envuelto en un silencio incómodo.)"
     scene bg habitacion_gabriel_oscuro with dissolve
-    narrador "Gabriel se sienta frente a la PC. El silencio de la casa pesa."
     scene bg papeles_escritorio with dissolve
-    narrador "(A un costado del teclado, se destaca el aviso de la AFIP.)"
 
     call screen documento_aviso("ARCA/AFIP - NOTIFICACIÓN DE DEUDA", "Se informa deuda pendiente. El expediente avanza a instancia de embargo preventivo.", "EMBARGO PREVENTIVO")
 
@@ -96,13 +108,20 @@ label dia1_casa_flor:
     
     show gabriel normal at busto_izquierda with dissolve
     gabriel "(Mira los precios, preocupado) Algo sencillo. No puedo gastar mucho hoy, de verdad."
+    show vendedor feliz at busto_derecha with dissolve
     vendedor "(Saca una única rosa) Llevate esta. El valor no está en el precio, sino en el gesto de haber pensado en el otro. Estar en paz con los que aman te ayuda a pensar. Te limpia la cabeza."
+    scene bg primer_plano_flor with dissolve
+    show vendedor normal at busto_derecha with dissolve
+    show gabriel normal at busto_izquierda with dissolve
     gabriel "(Mira su billetera, sonríe levemente y paga) Gracias, me la llevo."
+    show vendedor feliz at busto_derecha with dissolve
+    $ renpy.pause(1)
 
     scene bg cocina_calida with dissolve
+    $ renpy.pause(1)
     show gabriel normal at busto_izquierda with dissolve
-    narrador "Eva está terminando de ordenar. Lucas corre a abrazar a Gabriel apenas lo ve entrar."
 
+    $ renpy.pause(1)
     show lucas feliz at busto_derecha with dissolve
     lucas "¡Papá! ¡Llegaste!"
     
@@ -129,12 +148,10 @@ label dia1_casa_flor:
     gabriel "(Riéndose) Mañana será, hijo. Ahora a estudiar con mamá."
 
     hide lucas normal with dissolve
-    narrador "Eva y Lucas se van."
     scene bg habitacion_gabriel with dissolve
     show gabriel feliz at busto_izquierda with dissolve
     pensamiento "El florista tenía razón. El ambiente se siente distinto. Menos pesado."
     scene bg papeles_escritorio with dissolve
-    narrador "(A un costado del teclado, se destaca el aviso de la AFIP.)"
 
     call screen documento_aviso("ARCA/AFIP - NOTIFICACIÓN DE DEUDA", "Se informa deuda pendiente. El expediente avanza a instancia de embargo preventivo.", "EMBARGO PREVENTIVO")
 
@@ -144,17 +161,12 @@ label dia1_casa_flor:
 
 label dia1_parada_colectivo:
 
-    scene bg oficina
-
-    show gabriel enojado at busto_izquierda with dissolve
-    show daniel normal at busto_derecha with dissolve
-    "Gabriel asiente en silencio. Daniel le da una palmada condescendiente en el hombro y se va."
-    hide daniel normal with dissolve
-    
-    "Se enfoca el reloj que transiciona de 18hs a 21hs."
-
+    scene bg reloj_18hs with dissolve
+    $ renpy.pause(1)
+    scene bg reloj_21hs with dissolve
+    $ renpy.pause(2)
+    scene black with dissolve
     scene bg parada_lluvia with dissolve
-    "Gabriel está solo, encorvado bajo el frío. Un vagabundo sentado sobre unos cartones extiende una mano."
 
     show gabriel triste at busto_izquierda with dissolve
     show vagabundo normal at busto_derecha with dissolve
@@ -163,10 +175,12 @@ label dia1_parada_colectivo:
     menu:
         "Ayudarlo":
             $ decision_calle = "ayudar"
+            $ estado_animo_eva = "frio"
             jump casa_ayuda
 
         "Ignorarlo":
             $ decision_calle = "ignorar"
+            $ estado_animo_eva = "agresivo"
             jump casa_ignora
 
 
@@ -189,14 +203,14 @@ label casa_ayuda:
     gabriel "Ya llega el bondi. Me tengo que ir."
 
     hide vagabundo feliz with dissolve
-    "Llega el colectivo. Gabriel sube rápido, pero se queda mirando por la ventanilla mientras el hombre vuelve a fundirse en la oscuridad."
+    scene bg bondi_llegando with dissolve
 
     scene bg interior_colectivo with dissolve
+    show gabriel normal at busto_izquierda with dissolve
     gabriel "{i}Uno se pasa la vida escribiendo el prólogo. Solo yo me encuentro estos personajes.{/i}"
 
     scene bg cocina_calida with dissolve
     show eva normal at busto_derecha with dissolve
-    "Eva está lavando un plato. Lucas no está en escena."
 
     show gabriel normal at busto_izquierda with dissolve
     eva "Lucas ya se durmió. Estuvo preguntando por qué su papá no llegaba."
@@ -212,10 +226,6 @@ label casa_ayuda:
     show gabriel normal at busto_izquierda with dissolve
     gabriel "Probablemente no... pero no puedo decir que no ahora. No con cómo están las cosas."
 
-    hide gabriel with dissolve
-    "Se enfoca a Eva que suspira en resignación. Vuelve a Gabriel."
-
-    show gabriel normal at busto_izquierda with dissolve
     show eva normal at busto_derecha with dissolve
     gabriel "Eva, me queda una semana para terminar una historia. Si gano, puedo cambiar las cosas."
 
@@ -223,13 +233,15 @@ label casa_ayuda:
     eva "¿Ahora te parece el mejor momento, Gabriel? No sé si estamos para sueños ahora."
 
     hide eva with dissolve
-    "Eva sale de la cocina sin decir nada más. Se escucha el cierre de una puerta."
 
-    scene bg habitacion_gabriel with dissolve
-    "Solo la luz del monitor ilumina la cara de Gabriel."
+    if estado_animo_eva not in ("frio", "agresivo"):
+        scene bg habitacion_gabriel with dissolve
+    else:
+        scene bg habitacion_gabriel_oscuro with dissolve
+    $ renpy.pause(2.0, hard=True)
     scene bg papeles_escritorio with dissolve
-    "A un costado del teclado, se destaca el aviso de la AFIP."
 
+    $ renpy.pause(1.0, hard=True)
     call screen documento_aviso("ARCA/AFIP - NOTIFICACIÓN DE DEUDA", "Se informa deuda pendiente. El expediente avanza a instancia de embargo preventivo.", "EMBARGO PREVENTIVO")
 
     pensamiento "Tengo que escribir. Es lo único que me queda."
@@ -242,8 +254,6 @@ label casa_ignora:
     narrador "Gabriel da un paso atrás para evitar cruzar miradas con el hombre, acercándose demasiado al cordón de la vereda."
     hide vagabundo with dissolve
     narrador "Un taxi pasa a toda velocidad, pisando de lleno un bache gigante. Un chorro de agua sucia y barro empapa a Gabriel de pies a cabeza. El vagabundo ni se inmuta, solo se cubre con su cartón."
-    show gabriel enojado at busto_izquierda with dissolve
-    narrador "Llega el colectivo. Gabriel sube rápido, chorreando agua. La gente a su alrededor lo mira con desagrado y se aparta. Se sienta junto a la ventanilla mojada."
 
     scene bg interior_colectivo with dissolve
     show gabriel enojado at busto_izquierda with dissolve
@@ -257,8 +267,6 @@ label casa_ignora:
 
     scene bg banio with dissolve
     show gabriel enojado at busto_izquierda with dissolve
-    narrador "Gabriel está encorvado frente a la pileta, intentando limpiar el barro de su ropa bajo el chorro de agua fría."
-    narrador "En el reflejo del espejo se ve a Eva apareciendo en el marco de la puerta."
 
     show gabriel enojado at busto_izquierda with dissolve
     show eva triste at busto_derecha with dissolve
@@ -279,14 +287,14 @@ label casa_ignora:
     narrador "Eva sale, dejándolo solo."
     hide eva with dissolve
     show gabriel triste at busto_izquierda with dissolve
-    narrador "Gabriel se vuelve a mirar en el espejo salpicado: está empapado, sucio y derrotado."
+    $ renpy.pause(2)
     scene bg habitacion_gabriel_oscuro with dissolve
-    narrador "Solo la luz del monitor ilumina la cara de Gabriel."
+    $ renpy.pause(2)
     scene bg papeles_escritorio with dissolve
-    narrador "A un costado del teclado, se destaca el aviso de la AFIP."
 
     call screen documento_aviso("ARCA/AFIP - NOTIFICACIÓN DE DEUDA", "Se informa deuda pendiente. El expediente avanza a instancia de embargo preventivo.", "EMBARGO PREVENTIVO")
 
+    show gabriel triste at busto_izquierda with dissolve
     pensamiento "Tengo que escribir. Es lo único que me queda."
     jump dia1_eleccion_tono
 
@@ -316,17 +324,26 @@ label dia1_eleccion_tono:
 
 label dia1_convergencia_final:
 
-    if decision_calle == "comprar_regalo":
+    if estado_animo_eva not in ("frio", "agresivo"):
         scene bg habitacion_gabriel with dissolve
     else:
         scene bg habitacion_gabriel_oscuro with dissolve
 
-    narrador "(Tras elegir el tono del libro, se ve a Gabriel que saca una moneda del bolsillo. Se escucha solo la lluvia y se ve la luz del monitor reflejada.)"
-    narrador "(Se enfoca la moneda y lleva a un flashback.)"
+    $ renpy.pause(2.0, hard=True)
+    scene bg moneda_escritorio with dissolve
+
+    $ renpy.pause(2.0, hard=True)
+
     scene black with dissolve
+    $ renpy.pause(2.0, hard=True)
     scene bg habitacion_lucas with dissolve
     show lucas feliz at busto_izquierda with dissolve
-    narrador "(Lucas tiene dos juguetes en la mano.)"
+    $ renpy.pause(2.0, hard=True)
+    scene bg juguetes_lucas with dissolve
+    $ renpy.pause(2.0, hard=True)
+    show lucas feliz at busto_izquierda with dissolve
+    $ renpy.pause(2.0, hard=True)
+    scene bg habitacion_lucas with dissolve
     show lucas normal at busto_izquierda with dissolve
     lucas "Me quiero llevar uno para mostrarle a mis amigos hoy, pero no sé cuál llevar, pa."
 
@@ -345,22 +362,45 @@ label dia1_convergencia_final:
     show gabriel feliz at busto_derecha with dissolve
     gabriel "Porque no importa lo que diga la moneda, solo qué sentiste mientras volaba. Vamos a probar."
 
-    narrador "(Gabriel tira la moneda en el aire. Cae ceca.)"
+    scene bg moneda_volando with dissolve
+    $ renpy.pause(2.0, hard=True)
+    show gabriel feliz at busto_derecha with dissolve
+    show lucas enojado at busto_izquierda with dissolve
+    $ renpy.pause(2.0, hard=True)
+    scene black with dissolve
+    narrador "(Cae ceca.)"
+    scene bg habitacion_lucas with dissolve
     show lucas feliz at busto_izquierda with dissolve
     lucas "¡Vamos! ¡Llevo el dragón!"
-    narrador "(Lucas le da un abrazo a Gabriel. Se enfoca la moneda en el piso.)"
+    show gabriel feliz at busto_derecha with dissolve
+    narrador "(Lucas le da un abrazo a Gabriel.)"
+    scene bg moneda_escritorio with dissolve
+    $ renpy.pause(1.0, hard=True)
     scene black with dissolve
-    if decision_calle == "comprar_regalo":
+    $ renpy.pause(2.0, hard=True)
+    if estado_animo_eva not in ("frio", "agresivo"):
         scene bg habitacion_gabriel with dissolve
     else:
         scene bg habitacion_gabriel_oscuro with dissolve
-    narrador "(Se ve a Gabriel con la moneda en la mano.)"
+    scene bg moneda_escritorio with dissolve
+    if estado_animo_eva not in ("frio", "agresivo"):
+        scene bg habitacion_gabriel with dissolve
+    else:
+        scene bg habitacion_gabriel_oscuro with dissolve
 
+    $ renpy.pause(2.0, hard=True)
     show gabriel triste at busto_izquierda with dissolve
     pensamiento "¿Qué es lo que realmente quiero? ¿Qué tengo que hacer?"
 
-    narrador "(Gabriel lanza la moneda. El sonido del metal girando en el aire invade todo el ambiente, tapando el ruido de la lluvia. Gabriel atrapa la moneda con un golpe seco, cubriéndola con la otra palma sobre el escritorio.)"
-    narrador "(Gabriel no mira el resultado. Se lo escucha suspirar.)"
+    scene bg moneda_volando with dissolve
+    $ renpy.pause(2.0, hard=True)
+    scene bg moneda_escritorio with dissolve
+    $ renpy.pause(2.0, hard=True)
+    if estado_animo_eva not in ("frio", "agresivo"):
+        scene bg habitacion_gabriel with dissolve
+    else:
+        scene bg habitacion_gabriel_oscuro with dissolve
+    narrador "(Gabriel no mira el resultado.)"
     scene black with dissolve
     sistema "FIN DEL DÍA 1"
 
