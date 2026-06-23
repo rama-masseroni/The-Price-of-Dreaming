@@ -81,7 +81,7 @@ define gui.label_text_size = 36
 define gui.notify_text_size = 24
 
 ## El tamaño del título del juego.
-define gui.title_text_size = 75
+define gui.title_text_size = 0
 
 
 ## Menú principal y menús del juego ############################################
@@ -205,15 +205,16 @@ define gui.quick_button_text_selected_color = gui.accent_color
 ##
 ## Los botones de opción se utilizan en los menús del juego.
 
-define gui.choice_button_width = 1185
-define gui.choice_button_height = None
+define gui.choice_button_width = 550
+define gui.choice_button_height = 250
 define gui.choice_button_tile = False
-define gui.choice_button_borders = Borders(150, 8, 150, 8)
+define gui.choice_button_borders = Borders(0, 0, 0, 0)
 define gui.choice_button_text_font = gui.text_font
 define gui.choice_button_text_size = gui.text_size
 define gui.choice_button_text_xalign = 0.5
-define gui.choice_button_text_idle_color = '#888888'
-define gui.choice_button_text_hover_color = "#ffffff"
+define gui.choice_button_text_yalign = 0.45
+define gui.choice_button_text_idle_color = '#e7e7e7'
+define gui.choice_button_text_hover_color = "#31290f"
 define gui.choice_button_text_insensitive_color = '#8888887f'
 
 
@@ -453,7 +454,7 @@ init python:
         ## Cambia el tamaño y espaciado de varios elementos.
         gui.slider_size = 54
 
-        gui.choice_button_width = 1860
+        gui.choice_button_width = None
         gui.choice_button_text_size = 45
 
         gui.navigation_spacing = 30

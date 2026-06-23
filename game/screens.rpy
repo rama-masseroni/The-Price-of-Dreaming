@@ -217,6 +217,10 @@ style choice_vbox is vbox
 style choice_button is button
 style choice_button_text is button_text
 
+style choice_button:
+    background "gui/button/choice_idle_background.png"
+    hover_background "gui/button/choice_hover_background.png"
+
 style choice_vbox:
     xalign 0.5
     ypos 405
@@ -352,7 +356,11 @@ style navigation_button_text:
 ## https://www.renpy.org/doc/html/screen_special.html#main-menu
 
 screen main_menu():
-
+    add Transform(
+    "images/menu_principal.png",
+    xsize=config.screen_width,
+    ysize=config.screen_height
+)
     ## Esto asegura que cualquier otra pantalla de menu es remplazada.
     tag menu
 
@@ -1335,7 +1343,12 @@ screen nvl(dialogue, items=None):
 
             textbutton i.caption:
                 action i.action
-                style "nvl_button"
+                background "gui/button/choice_idle_background.png"
+                hover_background "gui/button/choice_hover_background.png"
+                xpadding 40
+                ypadding 20
+                text_xalign 0.5
+                text_yalign 0.5
 
     add SideImage() xalign 0.0 yalign 1.0
 

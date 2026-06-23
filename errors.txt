@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 111: expected 'simple_expression' not found.
-    show vendedor feliz at
-                           ^
+File "game/script.rpy", line 281: expected statement.
+    gabriel: "¡No lo puedo creer! ¡¿Es joda?!"
+           ^
 
-Ren'Py Version: Ren'Py 8.5.2.26010301
-Mon Jun 15 23:14:33 2026
+Ren'Py Version: Ren'Py 8.5.3.26051504
+Tue Jun 16 16:41:47 2026

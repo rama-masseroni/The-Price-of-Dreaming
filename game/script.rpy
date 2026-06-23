@@ -11,15 +11,16 @@ default tono_novela = None
 
 label start:
 
-    scene black
-
     scene bg oficina with dissolve
+
+    play music "audio/SFX/sonidoAmbienteOficina.mp3"
 
     narrador "DÍA 1"
     scene bg reloj_18hs with dissolve
     $ renpy.pause(2)
     show gabriel normal at busto_izquierda with dissolve
     pensamiento "Ya casi son las seis. Por fin me puedo ir a casa. Reviso este mail y me voy."
+    play sound "audio/SFX/mouseclick.mp3"
 
     scene bg oficina with dissolve
     call screen correo_convocatoria
@@ -43,6 +44,10 @@ label start:
             daniel "¡Así me gusta! Sabía que podía contar con tu compromiso. Yo me voy a casa, pero confío en que vas a dejar todo lo que falta cerrado."
             show gabriel enojado at busto_izquierda with dissolve
             gabriel "Nos vemos mañana, Daniel."
+            hide daniel with dissolve
+            play sound "audio/SFX/closedoor.mp3"
+            $ renpy.pause(1.0)
+            stop music fadeout 2.0
             jump dia1_parada_colectivo
 
         "Excusarse":
@@ -51,6 +56,7 @@ label start:
             daniel "Bueno... Una lástima. Pensé que estabas más comprometido con el equipo. Podés irte."
             hide daniel enojado with dissolve
             pensamiento "Espero no habérmela mandado. Mejor me voy yendo antes de que cambie de opinión."
+            stop music fadeout 2.0
             jump dia1_calle_temprano
 
 
@@ -59,8 +65,9 @@ label dia1_calle_temprano:
     scene bg centro_floreria with dissolve
     show gabriel normal at busto_izquierda with dissolve
 
-    narrador "(Tras negarse a las horas extra, Gabriel camina por el centro antes de tomar el colectivo. Se detiene frente a una florería pequeña.)"
-    pensamiento "Hace mucho no tengo un gesto con Eva. El laburo me está matando."
+    pensamiento "Le dije que no a Daniel. Eva me va a matar por jugármela así. Pero hoy, por una vez, prioricé volver a casa temprano para estar con ellos y avanzar con el libro."
+
+    pensamiento "Hace mucho no tengo un gesto con Eva. ¿Servirá de algo a esta altura? ¿O va a pensar que le llevo algo nada más para que no se enoje?"
 
     menu:
         "Volver a casa":
@@ -75,7 +82,7 @@ label dia1_calle_temprano:
 label dia1_casa_directo:
 
     scene bg cocina_fria with dissolve
-
+    play music "audio/MUSICA/tango cocina.mp3"
     show gabriel normal at busto_izquierda with dissolve
     show eva normal at busto_derecha with dissolve
     lucas "¡Papá! Llegaste temprano."
@@ -87,7 +94,8 @@ label dia1_casa_directo:
     eva "(Con voz dura, pragmática). Me alegra que estés acá con nosotros, pero me asusta lo que estás apostando. (Se pone de pie). Lucas, vamos a la pieza a terminar la tarea, dejá a tu papá \"trabajar\"."
 
     show lucas normal at busto_derecha with dissolve
-    narrador "(El ambiente de la cocina queda frío y envuelto en un silencio incómodo.)"
+
+    stop music fadeout 1.0
     scene bg habitacion_gabriel_oscuro with dissolve
     scene bg papeles_escritorio with dissolve
 
@@ -100,24 +108,37 @@ label dia1_casa_directo:
 label dia1_casa_flor:
 
     scene bg interior_floreria with dissolve
-
-    narrador "(Entra al local. Un vendedor mayor lo observa detrás de varios ramos de flores.)"
+    play music "audio/MUSICA/tango florería.mp3"
 
     show vendedor normal at busto_derecha with dissolve
     vendedor "Buscás algo para pedir perdón o para que no se olviden de vos, ¿no? Se te nota en la cara."
     
     show gabriel normal at busto_izquierda with dissolve
-    gabriel "(Mira los precios, preocupado) Algo sencillo. No puedo gastar mucho hoy, de verdad."
+    gabriel "Un poco de las dos cosas, creo. Busco algo sencillo. No puedo gastar mucho hoy."
     show vendedor feliz at busto_derecha with dissolve
-    vendedor "(Saca una única rosa) Llevate esta. El valor no está en el precio, sino en el gesto de haber pensado en el otro. Estar en paz con los que aman te ayuda a pensar. Te limpia la cabeza."
+    vendedor "Entran muchos muchachos como vos acá. Corriendo, mirando el reloj, con la cabeza llena de cuentas y problemas del laburo. En el camino se van desconectando de los que los esperan en casa."
+    gabriel "Es que hace tanto que no le llevo nada. No sé. Tengo miedo de que piense que se lo llevo nada más para tapar mi culpa."
+    
     scene bg primer_plano_flor with dissolve
+    vendedor "Llevate esta rosa sola entonces."
+    scene bg interior_floreria with dissolve
+    
     show vendedor normal at busto_derecha with dissolve
     show gabriel normal at busto_izquierda with dissolve
-    gabriel "(Mira su billetera, sonríe levemente y paga) Gracias, me la llevo."
+    vendedor "Si le caés con un ramo gigante y caro, va a pensar que te mandaste una macana o que querés comprarla. Pero una sola flor dice: frené un segundo mi día sólo para acordarme de vos."
+    gabriel "¿Frenar un segundo? No lo había pensado de esa forma."
+    vendedor "Exacto. El valor no está en el precio, sino en el gesto de haber pensado en el otro. Estar en paz con los que te aman te ayuda a pensar. Te limpia la cabeza. Y se nota que necesitás despejar la cabeza."
+    show gabriel feliz at busto_izquierda with dissolve
+    gabriel "Tenés razón. Gracias, me la llevo."
+    vendedor "Gran decisión. Espero que le vaya muy bien."
+    gabriel "Muchas gracias por el consejo. Hasta luego."
+
     show vendedor feliz at busto_derecha with dissolve
+    stop music fadeout 2.0
     $ renpy.pause(1)
 
     scene bg cocina_calida with dissolve
+    play music "audio/MUSICA/tango_rosa.mp3"
     $ renpy.pause(1)
     show gabriel normal at busto_izquierda with dissolve
 
@@ -126,28 +147,30 @@ label dia1_casa_flor:
     lucas "¡Papá! ¡Llegaste!"
     
     show gabriel feliz at busto_izquierda with dissolve
-    gabriel "(Le da un beso a Lucas)"
+    gabriel "¡Hola campeón!"
     hide lucas feliz
     show eva normal at busto_derecha with dissolve
     gabriel "Tomá. Pasé por la florería y me acordé de vos."
 
-    eva "(Sorprendida, toma la flor y la huele.)"
+    eva "Es hermosa, amor, gracias."
+    
     show eva feliz at busto_derecha with dissolve
-    eva "(Su expresión de cansancio se suaviza un segundo)"
-    eva "Es hermosa, amor, gracias. ¿Te fue bien en la oficina hoy?"
+    gabriel "No tanto como vos."
+    eva "Que romántico que estas hoy. ¿Cómo estuvo tu día? ¿Te fue bien en la oficina hoy?"
     gabriel "No mucho. Me pidieron quedarme horas extra y le dije que no. No le gustó nada al jefe. Quería tiempo para ustedes y para escribir."
     eva "Te amamos, pero me preocupa que tu sueño de escribir te vaya a complicar el laburo."
     gabriel "Necesito el tiempo para la historia, amor. Quería que estuviéramos bien antes de sentarme a escribir. No los voy a defraudar."
-    eva "(Sonríe un poco esperanzada) Te dejo a lo tuyo entonces. Voy a ayudar a Lucas con la tarea."
+    eva "Te dejo a lo tuyo entonces. Voy a ayudar a Lucas con la tarea."
     hide gabriel feliz
     show lucas normal at busto_izquierda with dissolve
     lucas "¿Ahora? ¡Pero quería jugar con papá!"
 
     hide eva feliz
     show gabriel feliz at busto_derecha with dissolve
-    gabriel "(Riéndose) Mañana será, hijo. Ahora a estudiar con mamá."
+    gabriel "Mañana será, hijo. Ahora a estudiar con mamá."
 
     hide lucas normal with dissolve
+    stop music fadeout 0.5
     scene bg habitacion_gabriel with dissolve
     show gabriel feliz at busto_izquierda with dissolve
     pensamiento "El florista tenía razón. El ambiente se siente distinto. Menos pesado."
@@ -162,11 +185,14 @@ label dia1_casa_flor:
 label dia1_parada_colectivo:
 
     scene bg reloj_18hs with dissolve
+    play sound "audio/SFX/slow clock ticking.mp3"
     $ renpy.pause(1)
     scene bg reloj_21hs with dissolve
     $ renpy.pause(2)
+    stop sound fadeout 0.4
     scene black with dissolve
     scene bg parada_lluvia with dissolve
+    play music "audio/SFX/lluviaGeneral.mp3"
 
     show gabriel triste at busto_izquierda with dissolve
     show vagabundo normal at busto_derecha with dissolve
@@ -202,14 +228,23 @@ label casa_ayuda:
 
     gabriel "Ya llega el bondi. Me tengo que ir."
 
+    scene bg bondi_primer_plano with dissolve
+    $ renpy.pause(2)
+
     hide vagabundo feliz with dissolve
     scene bg bondi_llegando with dissolve
+    play sound "audio/SFX/sonidoColectivo.mp3"
 
     scene bg interior_colectivo with dissolve
     show gabriel normal at busto_izquierda with dissolve
     gabriel "{i}Uno se pasa la vida escribiendo el prólogo. Solo yo me encuentro estos personajes.{/i}"
 
     scene bg cocina_calida with dissolve
+    stop sound fadeout 0.5
+    stop music fadeout 0.5
+    
+    play music "audio/MUSICA/tango cocina.mp3"
+
     show eva normal at busto_derecha with dissolve
 
     show gabriel normal at busto_izquierda with dissolve
@@ -231,8 +266,12 @@ label casa_ayuda:
 
     show eva enojada at busto_derecha with dissolve
     eva "¿Ahora te parece el mejor momento, Gabriel? No sé si estamos para sueños ahora."
-
+    play sound "audio/SFX/mujersuspiro.mp3"
+    stop music fadeout 0.5
+    $ renpy.pause(2)
     hide eva with dissolve
+    play sound "audio/SFX/closedoor.mp3"
+    
 
     if estado_animo_eva not in ("frio", "agresivo"):
         scene bg habitacion_gabriel with dissolve
@@ -251,22 +290,42 @@ label casa_ayuda:
 label casa_ignora:
 
     show gabriel normal at busto_izquierda with dissolve
-    narrador "Gabriel da un paso atrás para evitar cruzar miradas con el hombre, acercándose demasiado al cordón de la vereda."
+    pensamiento "Mejor me alejo un poco."
     hide vagabundo with dissolve
-    narrador "Un taxi pasa a toda velocidad, pisando de lleno un bache gigante. Un chorro de agua sucia y barro empapa a Gabriel de pies a cabeza. El vagabundo ni se inmuta, solo se cubre con su cartón."
+
+    play sound "audio/SFX/autocharco.mp3"
+    scene bg auto_charco with dissolve
+    
+    $ renpy.pause(4)
+
+    scene bg parada_lluvia with dissolve
+    show gabriel enojado at busto_izquierda with dissolve
+    gabriel "¡No lo puedo creer! ¡¿Es joda?!"
+
+    pensamiento "Me embarró todo. Qué asco. Ahí viene el bondi encima."
+
+    scene bg bondi_primer_plano with dissolve
+    $ renpy.pause(2)
 
     scene bg interior_colectivo with dissolve
+    play sound "audio/SFX/sonidoColectivo.mp3"
     show gabriel enojado at busto_izquierda with dissolve
     pensamiento "Qué locura cómo estamos. La calle no perdona a nadie."
+    
+
+    stop music fadeout 0.5
 
     scene bg entrada_casa with dissolve
-    narrador "Gabriel está empapado y el agua sucia gotea sobre el piso."
+    stop sound fadeout 0.7
+    
 
     show gabriel normal at busto_izquierda with dissolve
     pensamiento "Me tengo que sacar el barro antes de poner a lavar esto."
+    play music "audio/MUSICA/musicaDiscusion.mp3"
 
     scene bg banio with dissolve
     show gabriel enojado at busto_izquierda with dissolve
+    
 
     show gabriel enojado at busto_izquierda with dissolve
     show eva triste at busto_derecha with dissolve
@@ -284,10 +343,11 @@ label casa_ignora:
     show eva enojada at busto_derecha with dissolve
     eva "Mirate, Gabriel. Estás lavando barro de tu única ropa decente en un baño congelado a las diez de la noche. Secate y andá a dormir, no quiero que Lucas te escuche gritar así."
 
-    narrador "Eva sale, dejándolo solo."
+    
+
     hide eva with dissolve
     show gabriel triste at busto_izquierda with dissolve
-    $ renpy.pause(2)
+    $ renpy.pause(3)
     scene bg habitacion_gabriel_oscuro with dissolve
     $ renpy.pause(2)
     scene bg papeles_escritorio with dissolve
@@ -318,7 +378,7 @@ label dia1_eleccion_tono:
         "Esperanzador":
             $ tono_novela = "esperanzador"
             narrador "Gabriel empieza a escribir aferrándose a la esperanza."
-
+    stop music fadeout 2.0
     jump dia1_convergencia_final
 
 
@@ -337,6 +397,7 @@ label dia1_convergencia_final:
     scene black with dissolve
     $ renpy.pause(2.0, hard=True)
     scene bg habitacion_lucas with dissolve
+    play music "audio/MUSICA/musicaflashback.mp3"
     show lucas feliz at busto_izquierda with dissolve
     $ renpy.pause(2.0, hard=True)
     scene bg juguetes_lucas with dissolve
@@ -347,7 +408,13 @@ label dia1_convergencia_final:
     show lucas normal at busto_izquierda with dissolve
     lucas "Me quiero llevar uno para mostrarle a mis amigos hoy, pero no sé cuál llevar, pa."
 
+    scene bg juguetes_lucas with dissolve
+    $ renpy.pause(2)
+
+    scene bg habitacion_lucas with dissolve
+    show lucas normal at busto_izquierda with dissolve
     show gabriel normal at busto_derecha with dissolve
+
     gabriel "(Sonriendo, saca una moneda del bolsillo). Te voy a enseñar un truco. Vamos a tirarla. Cara es el auto, ceca es el dragón."
     
     show lucas triste at busto_izquierda with dissolve
@@ -362,27 +429,33 @@ label dia1_convergencia_final:
     show gabriel feliz at busto_derecha with dissolve
     gabriel "Porque no importa lo que diga la moneda, solo qué sentiste mientras volaba. Vamos a probar."
 
-    scene bg moneda_volando with dissolve
+    scene bg moneda_volando_flashback with dissolve
+    play sound "audio/SFX/coin flip.mp3"
     $ renpy.pause(2.0, hard=True)
     show gabriel feliz at busto_derecha with dissolve
     show lucas enojado at busto_izquierda with dissolve
     $ renpy.pause(2.0, hard=True)
     scene black with dissolve
-    narrador "(Cae ceca.)"
     scene bg habitacion_lucas with dissolve
     show lucas feliz at busto_izquierda with dissolve
     lucas "¡Vamos! ¡Llevo el dragón!"
     show gabriel feliz at busto_derecha with dissolve
     narrador "(Lucas le da un abrazo a Gabriel.)"
-    scene bg moneda_escritorio with dissolve
     $ renpy.pause(1.0, hard=True)
+    stop music fadeout 2.0
     scene black with dissolve
     $ renpy.pause(2.0, hard=True)
+
+    play music "audio/MUSICA/Carlos-Gardel-Por-una-cabeza.mp3"
+    scene bg moneda_escritorio with dissolve
+    $ renpy.pause(3.0)
+    
+
+    scene  bg mone
     if estado_animo_eva not in ("frio", "agresivo"):
         scene bg habitacion_gabriel with dissolve
     else:
         scene bg habitacion_gabriel_oscuro with dissolve
-    scene bg moneda_escritorio with dissolve
     if estado_animo_eva not in ("frio", "agresivo"):
         scene bg habitacion_gabriel with dissolve
     else:
@@ -391,11 +464,16 @@ label dia1_convergencia_final:
     $ renpy.pause(2.0, hard=True)
     show gabriel triste at busto_izquierda with dissolve
     pensamiento "¿Qué es lo que realmente quiero? ¿Qué tengo que hacer?"
-
-    scene bg moneda_volando with dissolve
-    $ renpy.pause(2.0, hard=True)
     scene bg moneda_escritorio with dissolve
     $ renpy.pause(2.0, hard=True)
+    show gabriel triste at busto_izquierda with dissolve
+    $ renpy.pause(2.0, hard=True)
+
+    scene bg moneda_volando with dissolve
+    play sound "audio/SFX/coin flip.mp3"
+    $ renpy.pause(2.0, hard=True)
+   
+    play sound "audio/SFX/hombresuspiro.mp3"
     if estado_animo_eva not in ("frio", "agresivo"):
         scene bg habitacion_gabriel with dissolve
     else:
